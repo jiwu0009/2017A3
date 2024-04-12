@@ -1,23 +1,15 @@
 {
   "name": "unikey-tracker",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A simple project to track snack data.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "engines": {
-    "node": "20.x"
-  },
+  "author": "",
   "license": "MIT",
-  "keywords": [
-    "node",
-    "express",
-    "snack",
-    "tracking"
-  ],
   "dependencies": {
-    "express": "^4.19.2",
-    "Express": "^3.0.1"
+    "express": "^4.17.1",
+    "body-parser": "^1.19.0"
   }
 }
