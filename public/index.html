@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>零食跟踪应用</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>零食跟踪应用</h1>
+    <form id="snackForm">
+        <input type="text" id="name" placeholder="零食名称" required>
+        <input type="text" id="category" placeholder="类别" required>
+        <input type="number" id="calories" placeholder="卡路里" required>
+        <button type="button" onclick="addSnack()">添加零食</button>
+    </form>
+
+    <ul id="snackList"></ul>
+
+    <script src="app.js"></script>
+</body>
+</html>

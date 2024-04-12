@@ -1,0 +1,21 @@
+{
+  "name": "2017a3",
+  "version": "0.0.1",
+  "description": "Basic server using Node.js & Express",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "14.x" 
+    },
+  "keywords": [ 
+        "node",
+        "server",
+        "HTTP"
+        ],
+  "license": "MIT",
+  "dependencies":{ 
+  "express": "^4.17.1"
+  }
+}
