@@ -9,3 +9,7 @@ app.use(express.static('public'));
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server running at http://localhost:${port}/`);
 });
+app.use((req, res, next) => {
+  console.log(`Received request for ${req.url}`);
+  next();
+});
