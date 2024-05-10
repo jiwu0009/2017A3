@@ -13,3 +13,14 @@ app.use((req, res, next) => {
   console.log(`Received request for ${req.url}`);
   next();
 });
+fetch('/get-snacks')
+    .then(response => response.json())
+    .then(snacks => {
+        const snackList = document.getElementById('snackList');
+        snacks.forEach(snack => {
+            const li = document.createElement('li');
+            li.textContent = `${snack.name} - ${snack.category} - ${snack.calories} calories`;
+            snackList.appendChild(li);
+        });
+    })
+    .catch(error => console.error('Error:', error));

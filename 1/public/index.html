@@ -2,19 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>零食跟踪应用</title>
+    <title>巧克力收藏应用</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>零食跟踪应用</h1>
-    <form id="snackForm">
-        <input type="text" id="name" placeholder="零食名称" required>
-        <input type="text" id="category" placeholder="类别" required>
+    <h1>巧克力收藏应用</h1>
+    <form id="chocolateForm">
+        <input type="text" id="name" placeholder="巧克力名称" required>
+        <input type="text" id="type" placeholder="类型" required>
         <input type="number" id="calories" placeholder="卡路里" required>
-        <button type="button" onclick="addSnack()">添加零食</button>
+        <input type="text" id="ingredients" placeholder="成分" required>
+        <textarea id="comments" placeholder="评论"></textarea>
+        <button type="button" onclick="addChocolate()">添加巧克力</button>
+        
     </form>
-
-    <ul id="snackList"></ul>
+    
+<ul id="chocolateList"></ul>
+    <h2>卡路里总和：<span id="totalCalories">0</span></h2>
+    <div id="chocolatesByDate"></div>
+    <button id="clear">清除所有巧克力</button>
 
     <script src="app.js"></script>
 </body>

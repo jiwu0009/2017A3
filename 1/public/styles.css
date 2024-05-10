@@ -25,3 +25,27 @@ ul {
     list-style-type: none;
     padding: 0;
 }
+
+
+.dateToggle {
+    background-color: #f1f1f1;
+    color: black;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+}
+
+
+
