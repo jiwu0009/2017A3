@@ -8,8 +8,25 @@ function addChocolate() {
 
     const dateAdded = new Date().toISOString().split('T')[0];
 
+    // Get the image input and destination elements
+    const imgInput = document.getElementById("img-input");
+    let imgData = '';
+
+    if (imgInput.files.length > 0) {
+        const reader = new FileReader();
+        reader.onloadend = function (e) {
+            imgData = e.target.result;
+            saveChocolate(name, type, calories, ingredients, comments, rating, dateAdded, imgData);
+        };
+        reader.readAsDataURL(imgInput.files[0]);
+    } else {
+        saveChocolate(name, type, calories, ingredients, comments, rating, dateAdded, imgData);
+    }
+}
+
+function saveChocolate(name, type, calories, ingredients, comments, rating, dateAdded, imgData) {
     let chocolates = JSON.parse(localStorage.getItem('favChocolates')) || [];
-    chocolates.push({ name, type, calories, ingredients, comments, rating, dateAdded });  // 添加评分到对象中
+    chocolates.push({ name, type, calories, ingredients, comments, rating, dateAdded, imgData });  // 添加评分和图片数据到对象中
     localStorage.setItem('favChocolates', JSON.stringify(chocolates));
     updateChocolates();
     calculateTotalCalories();
@@ -43,6 +60,14 @@ function updateChocolates() {
 
             let detail = document.createElement('p');
             detail.textContent = `${item.name} - ${item.type} - ${item.calories} 卡路里 - 成分: ${item.ingredients} - 备注: ${item.comments} - 评分: ${"⭐️".repeat(item.rating)}`;
+            if (item.imgData) {
+                let img = document.createElement('img');
+                img.src = item.imgData;
+                img.alt = item.name;
+                img.style.maxWidth = '100px';
+                img.style.marginLeft = '10px';
+                detail.appendChild(img);
+            }
             detail.prepend(checkbox);
             detailsDiv.appendChild(detail);
         });
@@ -159,43 +184,19 @@ function updateChocolatesByRating() {
     container.innerHTML = ''; // 清空现有内容，以便新的排序可以显示
 
     // 对巧克力数组进行排序，按照评分从高到低排序，并截取前五个
-    chocolates.sort((a, b) => b.rating - a.rating).slice(0, 5).forEach(choco => {
+    let sortedChocolates = chocolates.sort((a, b) => b.rating - a.rating).slice(0, 5);
+
+    sortedChocolates.forEach(choco => {
         let detail = document.createElement('p');
         detail.textContent = `${choco.name} - ${choco.type} - ${choco.calories} 卡路里 - 成分: ${choco.ingredients} - 备注: ${choco.comments} - 评分: ${"⭐️".repeat(choco.rating)}`;
+        if (choco.imgData) {
+            let img = document.createElement('img');
+            img.src = choco.imgData;
+            img.alt = choco.name;
+            img.style.maxWidth = '100px';
+            img.style.marginLeft = '10px';
+            detail.appendChild(img);
+        }
         container.appendChild(detail);
     });
-}
-
-function searchChocolates() {
-    const searchText = document.getElementById('searchInput').value.toLowerCase();
-    const chocolates = JSON.parse(localStorage.getItem('favChocolates')) || [];
-    let container = document.getElementById('chocolatesByDate');
-    container.innerHTML = '';  // 清空当前显示的所有巧克力记录
-
-    chocolates.filter(choco => 
-        choco.name.toLowerCase().includes(searchText) || choco.ingredients.toLowerCase().includes(searchText)
-    ).forEach(choco => {
-        let detail = document.createElement('p');
-        detail.textContent = `${choco.name} - ${choco.type} - ${choco.calories} 卡路里 - 成分: ${choco.ingredients} - 备注: ${choco.comments} - 评分: ${"⭐️".repeat(choco.rating)}`;
-        container.appendChild(detail);
-    });
-}
-
-
-function searchChocolates() {
-    const searchText = document.getElementById('searchInput').value.toLowerCase();
-    const chocolates = JSON.parse(localStorage.getItem('favChocolates')) || [];
-    let container = document.getElementById('chocolatesByDate');
-    container.innerHTML = '';  // 清空当前显示的所有巧克力记录
-
-    chocolates.filter(choco => 
-        choco.name.toLowerCase().includes(searchText) || choco.ingredients.toLowerCase().includes(searchText)
-    ).forEach(choco => {
-        let detail = document.createElement('p');
-        detail.textContent = `${choco.name} - ${choco.type} - ${choco.calories} 卡路里 - 成分: ${choco.ingredients} - 备注: ${choco.comments} - 评分: ${"⭐️".repeat(choco.rating)}`;
-        container.appendChild(detail);
-    });
-}
-function returnToMainPage() {
-    location.reload();
 }

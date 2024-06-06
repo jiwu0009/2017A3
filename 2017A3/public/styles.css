@@ -4,6 +4,25 @@ body {
     background-color: #f4f4f9;
     text-align: center;
 }
+/* 基本样式 */
+.container {
+    width: 100%;
+    padding: 20px;
+}
+
+/* 大屏设备样式 */
+@media (min-width: 768px) {
+    .container {
+        width: 750px; /* 固定宽度 */
+    }
+}
+
+/* 更大屏幕的样式 */
+@media (min-width: 992px) {
+    .container {
+        width: 970px; /* 固定宽度 */
+    }
+}
 
 h1, h2 {
     color: #FF69B4; /* 粉色 */
@@ -115,3 +134,10 @@ button {
 button:hover {
     background-color: #ff1493; /* 鼠标悬停时，按钮背景颜色变为深粉色 */
 }
+
+
+.img-dest {
+    display: block;
+    width:400px;
+    margin-top:20px;
+  }
