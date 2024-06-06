@@ -2,85 +2,90 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>巧克力收藏应用</title>
+    <title>Chocolate Tracker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
 </head>
-
-<body class="container mt-4">
-    <h1 class="text-center">巧克力收藏应用</h1>
-    <div class="search-container mb-3">
-            <div>
-                <input type="text" id="searchTerm" placeholder="搜索巧克力">
-                <button type="button" onclick="searchChocolates()">搜索</button>
-                <button type="button" onclick="returnToMainPage()">返回</button>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 left">
+                <img src="/2017A3/4.jpeg" alt="Background Image" class="bg-img">
+                <div class="overlay">
+                    <h1 class="title">Chocolate Tracker🍫</h1>
+                    <p class="description">Welcome to the Chocolate Tracker. You can record and manage your favorite chocolates, including details like type, calories, ingredients, and more.</p>
+                    <p class="usage">Usage: Enter the chocolate information on the right and click "Add Chocolate" to save your collection.</p>
+                </div>
             </div>
-            
+            <div class="col-md-6 right">
+                <h1 class="text-center">Chocolate Tracker</h1>
+                <div class="search-container mb-3">
+                    <div>
+                        <input type="text" id="searchTerm" placeholder="Search Chocolates">
+                        <button type="button" onclick="searchChocolates()">Search</button>
+                        <button type="button" onclick="returnToMainPage()">Return</button>
+                    </div>
+                </div>
+                <form id="chocolateForm" class="mb-3">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="name" placeholder="Chocolate Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="type" placeholder="Type" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" class="form-control" id="calories" placeholder="Calories" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="ingredients" placeholder="Ingredients" required>
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" id="comments" placeholder="Comments"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-select" id="rating">
+                            <option value="1">⭐️</option>
+                            <option value="2">⭐️⭐️</option>
+                            <option value="3">⭐️⭐️⭐️</option>
+                            <option value="4">⭐️⭐️⭐️⭐️</option>
+                            <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <input id="img-input" type="file" class="form-control"/>
+                        <img id="img-dest" class="img-dest"></img>
+                    </div>
+                    <div class="mb-3 text-center">
+                        <button type="button" class="btn btn-deep-brown" onclick="addChocolate()">Add Chocolate</button>
+                    </div>
+                </form>
+                <ul id="chocolateList" class="list-group mb-3"></ul>
+                <h2>Total Calories: <span id="totalCalories">0</span></h2>
+                <div id="chocolatesByDate" class="mb-3"></div>
+                <div class="mb-3">
+                    <button id="toggleDeleteButtons" class="btn btn-deep-brown">Show/Hide Delete Buttons</button>
+                    <button id="deleteSelected" class="btn btn-deep-brown">Delete Selected</button>
+                    <button id="clear" class="btn btn-deep-brown">Clear All Chocolates</button>
+                </div>
+                <h2>Statistics</h2>
+                <div id="statistics" class="mb-3"></div>
+                <canvas id="chocolateChart" class="mb-3"></canvas>
+                <h2>Chocolates Sorted by Rating</h2>
+                <div id="chocolatesByRating" class="mb-3"></div>
+            </div>
         </div>
     </div>
-    
-    <form id="chocolateForm" class="mb-3">
-        <div class="mb-3">
-            <input type="text" class="form-control" id="name" placeholder="巧克力名称" required>
-        </div>
-        <div class="mb-3">
-            <input type="text" class="form-control" id="type" placeholder="类型" required>
-        </div>
-        <div class="mb-3">
-            <input type="number" class="form-control" id="calories" placeholder="卡路里" required>
-        </div>
-        <div class="mb-3">
-            <input type="text" class="form-control" id="ingredients" placeholder="成分" required>
-        </div>
-        <div class="mb-3">
-            <textarea class="form-control" id="comments" placeholder="评论"></textarea>
-        </div>
-        <div class="mb-3">
-            <select class="form-select" id="rating">
-                <option value="1">⭐️</option>
-                <option value="2">⭐️⭐️</option>
-                <option value="3">⭐️⭐️⭐️</option>
-                <option value="4">⭐️⭐️⭐️⭐️</option>
-                <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
-            </select>
-        </div>
-        </div>
-        <input id="img-input" type="file"/> 
-        <img id="img-dest" class="img-dest"></img>
-        </div>
-        <button type="button" class="btn btn-success" onclick="addChocolate()">添加巧克力</button>
-    </form>
 
-    <ul id="chocolateList" class="list-group mb-3"></ul>
-
-    <h2>卡路里总和：<span id="totalCalories">0</span></h2>
-
-    <div id="chocolatesByDate" class="mb-3"></div>
-
-    <div class="mb-3">
-        <button id="toggleDeleteButtons" class="btn btn-warning">显示/隐藏删除按钮</button>
-        <button id="deleteSelected" class="btn btn-danger">删除所选数据</button>
-        <button id="clear" class="btn btn-danger">清除所有巧克力</button>
-    </div>
-
-    <h2>统计信息</h2>
-    <div id="statistics" class="mb-3"></div>
-    <canvas id="chocolateChart" class="mb-3"></canvas>
-
-    <h2>按评分排序的巧克力</h2>
-    <div id="chocolatesByRating" class="mb-3"></div>
-
-    <!-- 模态框 -->
+    <!-- Modal -->
     <dialog id="chocolateDialog">
         <form method="dialog">
-            <p><label>巧克力名称: <input type="text" id="modalName"></label></p>
-            <p><label>类型: <input type="text" id="modalType"></label></p>
-            <p><label>卡路里: <input type="number" id="modalCalories"></label></p>
-            <p><label>成分: <input type="text" id="modalIngredients"></label></p>
-            <p><label>评论: <textarea id="modalComments"></textarea></p>
-            <p><label>评分: 
+            <p><label>Chocolate Name: <input type="text" id="modalName"></label></p>
+            <p><label>Type: <input type="text" id="modalType"></label></p>
+            <p><label>Calories: <input type="number" id="modalCalories"></label></p>
+            <p><label>Ingredients: <input type="text" id="modalIngredients"></label></p>
+            <p><label>Comments: <textarea id="modalComments"></textarea></p>
+            <p><label>Rating: 
                 <select id="modalRating">
                     <option value="1">⭐️</option>
                     <option value="2">⭐️⭐️</option>
@@ -90,8 +95,8 @@
                 </select>
             </label></p>
             <menu>
-                <button value="cancel">取消</button>
-                <button id="confirmBtn" value="default">确认</button>
+                <button value="cancel">Cancel</button>
+                <button id="confirmBtn" value="default">Confirm</button>
             </menu>
         </form>
     </dialog>

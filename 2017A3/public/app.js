@@ -47,7 +47,7 @@ function updateChocolates() {
     Object.keys(groupedByDate).forEach(date => {
         let datePanel = document.createElement('div');
         let toggleButton = document.createElement('button');
-        toggleButton.textContent = `日期：${date} (总卡路里: ${groupedByDate[date].reduce((sum, item) => sum + item.calories, 0)})`;
+        toggleButton.textContent = `Date：${date} (Total calories: ${groupedByDate[date].reduce((sum, item) => sum + item.calories, 0)})`;
 
         let detailsDiv = document.createElement('div');
         detailsDiv.style.display = 'none';
@@ -57,9 +57,10 @@ function updateChocolates() {
             checkbox.type = 'checkbox';
             checkbox.className = 'choco-checkbox';
             checkbox.value = JSON.stringify({ date, index });
+            checkbox.style.display = 'none'; // 隐藏选择框
 
             let detail = document.createElement('p');
-            detail.textContent = `${item.name} - ${item.type} - ${item.calories} 卡路里 - 成分: ${item.ingredients} - 备注: ${item.comments} - 评分: ${"⭐️".repeat(item.rating)}`;
+            detail.textContent = `${item.name} - ${item.type} - ${item.calories} calories - Ingredients: ${item.ingredients} - Comments: ${item.comments} - Rate: ${"⭐️".repeat(item.rating)}`;
             if (item.imgData) {
                 let img = document.createElement('img');
                 img.src = item.imgData;
@@ -84,6 +85,7 @@ function updateChocolates() {
     // Update the chocolates by rating
     updateChocolatesByRating();
 }
+
 
 function deleteSelectedChocolates() {
     let checkboxes = document.querySelectorAll('.choco-checkbox:checked');
@@ -144,8 +146,8 @@ function updateStatistics() {
     let mostLikedType = Object.keys(typeCount).reduce((max, type) => typeCount[type] > typeCount[max] ? type : max, Object.keys(typeCount)[0]);
 
     document.getElementById('statistics').innerHTML = `
-        <p>最高卡路里的巧克力: ${highestCaloriesChocolate.name} (${highestCaloriesChocolate.calories} 卡路里)</p>
-        <p>用户最喜爱的巧克力类型: ${mostLikedType} (${typeCount[mostLikedType]} 次)</p>
+        <p>Chocolate with highest calories: ${highestCaloriesChocolate.name} (${highestCaloriesChocolate.calories} calories)</p>
+        <p>Your favourite Chocolate: ${mostLikedType} (${typeCount[mostLikedType]} times)</p>
     `;
 
     // Update chart
@@ -188,7 +190,7 @@ function updateChocolatesByRating() {
 
     sortedChocolates.forEach(choco => {
         let detail = document.createElement('p');
-        detail.textContent = `${choco.name} - ${choco.type} - ${choco.calories} 卡路里 - 成分: ${choco.ingredients} - 备注: ${choco.comments} - 评分: ${"⭐️".repeat(choco.rating)}`;
+        detail.textContent = `${choco.name} - ${choco.type} - ${choco.calories} Calories - Ingredients: ${choco.ingredients} - Comments: ${choco.comments} - Rate: ${"⭐️".repeat(choco.rating)}`;
         if (choco.imgData) {
             let img = document.createElement('img');
             img.src = choco.imgData;
@@ -229,4 +231,22 @@ function searchChocolates() {
             container.appendChild(detail);
         }
     });
+}
+
+
+function previewImage() {
+    const input = document.getElementById('img-input');
+    const imgDest = document.getElementById('img-dest');
+    const file = input.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = function () {
+        imgDest.src = reader.result;
+    }
+
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        imgDest.src = "";
+    }
 }
