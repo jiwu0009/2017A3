@@ -200,3 +200,33 @@ function updateChocolatesByRating() {
         container.appendChild(detail);
     });
 }
+
+
+
+function returnToMainPage() {
+    document.getElementById('searchTerm').value = '';
+    updateChocolates();
+}
+
+function searchChocolates() {
+    let searchTerm = document.getElementById('searchTerm').value.toLowerCase();
+    let chocolates = JSON.parse(localStorage.getItem('favChocolates')) || [];
+    let container = document.getElementById('chocolatesByDate');
+    container.innerHTML = '';
+
+    chocolates.forEach((item, index) => {
+        if (item.name.toLowerCase().includes(searchTerm)) {
+            let detail = document.createElement('p');
+            detail.textContent = `${item.name} - ${item.type} - ${item.calories} 卡路里 - 成分: ${item.ingredients} - 备注: ${item.comments} - 评分: ${"⭐️".repeat(item.rating)}`;
+            if (item.imgData) {
+                let img = document.createElement('img');
+                img.src = item.imgData;
+                img.alt = item.name;
+                img.style.maxWidth = '100px';
+                img.style.marginLeft = '10px';
+                detail.appendChild(img);
+            }
+            container.appendChild(detail);
+        }
+    });
+}

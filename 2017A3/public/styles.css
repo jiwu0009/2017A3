@@ -1,64 +1,65 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: #f4f4f9;
+    margin: 0;
+    background: url('/Users/wjy2004/Desktop/2017A3/2017A3/4.jpeg') no-repeat center center fixed;
+    background-size: cover;
     text-align: center;
 }
-/* 基本样式 */
+
 .container {
     width: 100%;
     padding: 20px;
 }
 
-/* 大屏设备样式 */
 @media (min-width: 768px) {
     .container {
-        width: 750px; /* 固定宽度 */
+        width: 750px;
     }
 }
 
-/* 更大屏幕的样式 */
 @media (min-width: 992px) {
     .container {
-        width: 970px; /* 固定宽度 */
+        width: 970px;
     }
 }
 
 h1, h2 {
-    color: #FF69B4; /* 粉色 */
+    color: #8B4513; /* 巧克力色 */
 }
 
 form {
     margin-bottom: 20px;
-    display: inline-block; /* 使表单居中 */
-    text-align: left; /* 表单内部对齐 */
-    background-color: #ffe4e1; /* 粉色背景 */
+    display: inline-block;
+    text-align: left;
+    background-color: #D2691E; /* 巧克力色背景 */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-input[type="text"], input[type="number"], button {
-    padding: 10px; /* 增加填充 */
+input[type="text"], input[type="number"], input[type="file"], button {
+    padding: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #A0522D; /* 边框颜色改为巧克力色 */
     border-radius: 4px;
-    font-size: 16px; /* 增大字体 */
+    font-size: 16px;
+    background-color: #8B4513; /* 亮巧克力色背景 */
+    color: white; /* 白色文字 */
 }
 
 button {
     cursor: pointer;
-    background-color: #FF69B4; /* 粉色 */
+    background-color: #8B4513; /* 亮巧克力色 */
     color: white;
     border: none;
-    font-size: 16px; /* 增大字体 */
+    font-size: 16px;
     border-radius: 4px;
     transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #ff1493; /* 更深的粉色 */
+    background-color: #5A2D0C; /* 深巧克力色 */
 }
 
 ul {
@@ -67,7 +68,7 @@ ul {
 }
 
 .dateToggle {
-    background-color: #FFB6C1; /* 更浅的粉色 */
+    background-color: #D2691E; /* 浅巧克力色 */
     color: black;
     cursor: pointer;
     padding: 10px;
@@ -89,7 +90,7 @@ ul {
 #statistics, #chocolatesByRating {
     display: inline-block;
     text-align: left;
-    background-color: #ffe4e1; /* 粉色背景 */
+    background-color: #D2691E; /* 巧克力色背景 */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -104,40 +105,39 @@ canvas {
 button#deleteSelected, button#toggleDeleteButtons, button#clear {
     margin: 10px 5px;
 }
+
 .search-container {
-    text-align: center; /* 居中容器内的内容 */
-    margin-top: 20px; /* 在标题下留出一些空间 */
+    text-align: center;
+    margin-top: 20px;
 }
 
 .search-container input,
 .search-container button {
     margin-top: 10px;
     padding: 8px 15px;
-    font-size: 16px; /* 调整字体大小以改善可读性 */
+    font-size: 16px;
 }
 
 .search-container button {
-    cursor: pointer; /* 按钮在鼠标悬停时显示指针 */
+    cursor: pointer;
 }
-
 
 button {
     padding: 10px 20px;
     font-size: 16px;
-    color: white; /* 文字颜色保持为白色，以确保对比度足够高，易于阅读 */
-    background-color: #ff69b4; /* 设置按钮的默认背景颜色为亮粉色 */
+    color: white;
+    background-color: #8B4513; /* 亮巧克力色 */
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #ff1493; /* 鼠标悬停时，按钮背景颜色变为深粉色 */
+    background-color: #5A2D0C; /* 深巧克力色 */
 }
-
 
 .img-dest {
     display: block;
-    width:400px;
-    margin-top:20px;
-  }
+    width: 400px;
+    margin-top: 20px;
+}

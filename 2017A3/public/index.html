@@ -12,10 +12,12 @@
 <body class="container mt-4">
     <h1 class="text-center">巧克力收藏应用</h1>
     <div class="search-container mb-3">
-        <div class="input-group">
-            <input type="text" class="form-control" id="searchInput" placeholder="搜索名称或成分...">
-            <button class="btn btn-primary" onclick="searchChocolates()">搜索</button>
-            <button class="btn btn-secondary" onclick="returnToMainPage()">返回主界面</button>
+            <div>
+                <input type="text" id="searchTerm" placeholder="搜索巧克力">
+                <button type="button" onclick="searchChocolates()">搜索</button>
+                <button type="button" onclick="returnToMainPage()">返回</button>
+            </div>
+            
         </div>
     </div>
     
