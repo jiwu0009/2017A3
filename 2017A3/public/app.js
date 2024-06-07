@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function calculateTotalCalories() {
     let chocolates = JSON.parse(localStorage.getItem('favChocolates')) || [];
     let totalCalories = chocolates.reduce((sum, item) => sum + item.calories, 0);
-    document.getElementById('totalCalories').textContent = `总卡路里: ${totalCalories}`;
+    document.getElementById('totalCalories').textContent = ` ${totalCalories}`;
 }
 
 function updateStatistics() {

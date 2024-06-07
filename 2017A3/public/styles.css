@@ -72,6 +72,7 @@ body {
 
 h1, h2 {
     color: #8B4513; /* 巧克力色 */
+    font-family: 'LuckiestGuy', sans-serif; /* 应用本地字体 */
 }
 
 form {
@@ -175,7 +176,7 @@ button#deleteSelected, button#toggleDeleteButtons, button#clear {
     font-size: 16px;
 }
 
-search-container button {
+.search-container button {
     cursor: pointer;
 }
 
@@ -191,4 +192,27 @@ button {
 
 button:hover {
     background-color: #5A2D0C; /* 深巧克力色 */
+}
+
+/* Add this to change the placeholder text color to white */
+input::placeholder {
+    color: white; /* 白色 */
+    opacity: 1; /* Make sure the color is fully opaque */
+}
+
+/* Specific input types */
+input[type="text"]::placeholder,
+input[type="number"]::placeholder,
+input[type="file"]::placeholder {
+    color: white; /* 白色 */
+    opacity: 1; /* Make sure the color is fully opaque */
+}
+
+/* Add this to ensure compatibility with older browsers */
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: white; /* 白色 */
+}
+
+input::-ms-input-placeholder { /* Microsoft Edge */
+    color: white; /* 白色 */
 }
