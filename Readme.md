@@ -107,6 +107,27 @@ Debugging: Identifying and fixing bugs to ensure a smooth user experience.
 
 Design Completion: Polishing the design to meet the final requirements, ensuring the application is visually appealing and user-friendly.
 
+
+
+## Future Development Guidelines
+Need to maintain clear and consistent naming conventions.
+Commit and comment code changes regularly to improve traceability.
+
+### Code Structure
+index.html: Contains the main HTML structure.
+styles.css: Defines the style of the application.
+app.js: Contains JavaScript functions for application functionality.
+
+### Key Components:
+addChocolate: Function to add a new chocolate entry.
+updateChocolates: Updates the display of chocolate.
+calculateTotalCalories: Calculates the total calories of all entries.
+
+### Expansion and Improvement Suggestions
+Function Enhancement: Add user authentication to personalize data storage, and users can share chocolate reviews, etc.
+UI Improvement: Implement a more dynamic and responsive design. A more user-friendly web design is needed
+Analysis: Include more detailed analysis and reporting capabilities. For example, use charts to represent user consumption data, and analyze the composition of chocolate so that the website can automatically classify it.
+
 ## Reference
 
 Picture of chocolate from Pixabay.com
