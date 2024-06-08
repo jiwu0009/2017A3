@@ -1,50 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Chocolate Tracker</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8"> 
+    <title>Chocolate Tracker</title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> <!-- Links to Bootstrap CSS for styling -->
+    <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6 left">
-                <img src="/2017A3/4.jpeg" alt="Background Image" class="bg-img">
-                <div class="overlay">
-                    <h1 class="title">Chocolate Tracker🍫</h1>
-                    <p class="description">Welcome to the Chocolate Tracker. You can record and manage your favorite chocolates, including details like type, calories, ingredients, and more.</p>
-                    <p class="usage">Usage: Enter the chocolate information on the right and click "Add Chocolate" to save your collection.</p>
+        <div class="row"> <!-- Bootstrap row for layout -->
+            <div class="col-md-6 left"> <!-- Left column occupying 6 out of 12 columns -->
+                <img src="/2017A3/4.jpeg" alt="Background Image" class="bg-img"> <!-- Background image -->
+                <div class="overlay"> <!-- Overlay for text on the image -->
+                    <h1 class="title">Chocolate Tracker🍫</h1> <!-- Main title -->
+                    <p class="description">Welcome to the Chocolate Tracker. You can record and manage your favorite chocolates, including details like type, calories, ingredients, and more.</p> <!-- Description paragraph -->
+                    <p class="usage">Usage: Enter the chocolate information on the right and click "Add Chocolate" to save your collection.</p> <!-- Usage instructions -->
                 </div>
             </div>
-            <div class="col-md-6 right">
-                <h1 class="text-center">Chocolate Tracker</h1>
+            <div class="col-md-6 right"> <!-- Right column occupying 6 out of 12 columns -->
+                <h1 class="text-center">Chocolate Tracker</h1> <!-- Centered header -->
                 <div class="search-container mb-3">
                     <div>
-                        <input type="text" id="searchTerm" placeholder="Search Chocolates">
-                        <button type="button" onclick="searchChocolates()">Search</button>
-                        <button type="button" onclick="returnToMainPage()">Return</button>
+                        <input type="text" id="searchTerm" placeholder="Search Chocolates"> 
+                        <button type="button" onclick="searchChocolates()">Search</button> <!-- Search button -->
+                        <button type="button" onclick="returnToMainPage()">Return</button> <!-- Return button -->
                     </div>
                 </div>
-                <form id="chocolateForm" class="mb-3">
+                <form id="chocolateForm" class="mb-3"> 
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="name" placeholder="Chocolate Name" required>
+                        <input type="text" class="form-control" id="name" placeholder="Chocolate Name" required> 
                     </div>
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="type" placeholder="Type" required>
+                        <input type="text" class="form-control" id="type" placeholder="Type" required> 
                     </div>
                     <div class="mb-3">
-                        <input type="number" class="form-control" id="calories" placeholder="Calories" required>
+                        <input type="number" class="form-control" id="calories" placeholder="Calories" required> 
                     </div>
                     <div class="mb-3">
-                        <input type="text" class="form-control" id="ingredients" placeholder="Ingredients" required>
+                        <input type="text" class="form-control" id="ingredients" placeholder="Ingredients" required> 
                     </div>
                     <div class="mb-3">
-                        <textarea class="form-control" id="comments" placeholder="Comments"></textarea>
-                    </div>
+                        <textarea class="form-control" id="comments" placeholder="Comments"></textarea> 
                     <div class="mb-3">
-                        <select class="form-select" id="rating">
+                        <select class="form-select" id="rating"> <!-- Rating dropdown menu -->
                             <option value="1">⭐️</option>
                             <option value="2">⭐️⭐️</option>
                             <option value="3">⭐️⭐️⭐️</option>
@@ -53,40 +52,40 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <input id="img-input" type="file" class="form-control"/>
-                        <img id="img-dest" class="img-dest"></img>
+                        <input id="img-input" type="file" class="form-control"/> <!-- Image input field -->
+                        <img id="img-dest" class="img-dest"></img> <!-- Image display area -->
                     </div>
                     <div class="mb-3 text-center">
-                        <button type="button" class="btn btn-deep-brown" onclick="addChocolate()">Add Chocolate</button>
+                        <button type="button" class="btn btn-deep-brown" onclick="addChocolate()">Add Chocolate</button> 
                     </div>
                 </form>
-                <ul id="chocolateList" class="list-group mb-3"></ul>
-                <h2>Total Calories: <span id="totalCalories">0</span></h2>
-                <div id="chocolatesByDate" class="mb-3"></div>
+                <ul id="chocolateList" class="list-group mb-3"></ul> 
+                <h2>Total Calories: <span id="totalCalories">0</span></h2> <!-- Total calories display -->
+                <div id="chocolatesByDate" class="mb-3"></div> <!-- Chocolates by date display -->
                 <div class="mb-3">
-                    <button id="toggleDeleteButtons" class="btn btn-deep-brown">Show/Hide Delete Buttons</button>
-                    <button id="deleteSelected" class="btn btn-deep-brown">Delete Selected</button>
-                    <button id="clear" class="btn btn-deep-brown">Clear All Chocolates</button>
+                    <button id="toggleDeleteButtons" class="btn btn-deep-brown">Show/Hide Delete Buttons</button> <!-- Toggle delete buttons -->
+                    <button id="deleteSelected" class="btn btn-deep-brown">Delete Selected</button> <!-- Delete selected button -->
+                    <button id="clear" class="btn btn-deep-brown">Clear All Chocolates</button> <!-- Clear all chocolates button -->
                 </div>
                 <h2>Statistics</h2>
-                <div id="statistics" class="mb-3"></div>
-                <canvas id="chocolateChart" class="mb-3"></canvas>
+                <div id="statistics" class="mb-3"></div> <!-- Statistics display -->
+                <canvas id="chocolateChart" class="mb-3"></canvas> <!-- Chart display -->
                 <h2>Chocolates Sorted by Rating</h2>
-                <div id="chocolatesByRating" class="mb-3"></div>
+                <div id="chocolatesByRating" class="mb-3"></div> <!-- Chocolates sorted by rating display -->
             </div>
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal for editing chocolate details -->
     <dialog id="chocolateDialog">
         <form method="dialog">
-            <p><label>Chocolate Name: <input type="text" id="modalName"></label></p>
-            <p><label>Type: <input type="text" id="modalType"></label></p>
-            <p><label>Calories: <input type="number" id="modalCalories"></label></p>
-            <p><label>Ingredients: <input type="text" id="modalIngredients"></label></p>
+            <p><label>Chocolate Name: <input type="text" id="modalName"></label></p> 
+            <p><label>Type: <input type="text" id="modalType"></label></p> 
+            <p><label>Calories: <input type="number" id="modalCalories"></label></p> 
+            <p><label>Ingredients: <input type="text" id="modalIngredients"></label></p> 
             <p><label>Comments: <textarea id="modalComments"></textarea></p>
             <p><label>Rating: 
-                <select id="modalRating">
+                <select id="modalRating"> <!-- Modal rating dropdown -->
                     <option value="1">⭐️</option>
                     <option value="2">⭐️⭐️</option>
                     <option value="3">⭐️⭐️⭐️</option>
@@ -95,14 +94,13 @@
                 </select>
             </label></p>
             <menu>
-                <button value="cancel">Cancel</button>
-                <button id="confirmBtn" value="default">Confirm</button>
+                <button value="cancel">Cancel</button> <!-- Cancel button -->
+                <button id="confirmBtn" value="default">Confirm</button> <!-- Confirm button -->
             </menu>
         </form>
     </dialog>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-    <script src="app.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script> <!-- Popper.js for tooltips and popovers -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script> <!-- Bootstrap JS -->
+    <script src="app.js"></script> 
 </html>

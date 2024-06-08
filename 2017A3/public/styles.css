@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'LuckiestGuy';
+    font-family: 'LuckiestGuy'; 
     src: url('/2017A3/LuckiestGuy-Regular.ttf') format('truetype');
 }
 
@@ -11,11 +11,12 @@ body {
 }
 
 .container-fluid {
-    padding: 0;
+    padding: 0; /* No padding for full width */
+    
 }
 
 .left, .right {
-    height: 100vh;
+    height: 100vh; /* Full viewport height */
 }
 
 .left {
@@ -26,28 +27,28 @@ body {
 .left .bg-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Ensures the image covers the container */
 }
 
 .overlay {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    color: white; /* 确保文字颜色为白色 */
-    text-align: center; /* 居中对齐文本 */
+    transform: translate(-50%, -50%); /* Centers the text */
+    color: white;
+    text-align: center;
 }
 
 .title {
     font-size: 5em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 标题文字阴影 */
-    font-family: 'LuckiestGuy', sans-serif; /* 应用本地字体 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for the title */
+    font-family: 'LuckiestGuy', sans-serif;
 }
 
 .description, .usage {
     margin-top: 10px;
     font-size: 1.2em;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* 描述文字阴影 */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Text shadow for description and usage */
 }
 
 .user-images {
@@ -56,7 +57,7 @@ body {
     width: 100%;
     text-align: center;
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.7); /* 半透明白色背景 */
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
 }
 
 .img-dest {
@@ -71,62 +72,62 @@ body {
 }
 
 h1, h2 {
-    color: #8B4513; /* 巧克力色 */
-    font-family: 'LuckiestGuy', sans-serif; /* 应用本地字体 */
+    color: #8B4513; 
+    font-family: 'LuckiestGuy', sans-serif;
 }
 
 form {
     margin-bottom: 20px;
     display: inline-block;
-    text-align: left;
-    background-color: #D2691E; /* 巧克力色背景 */
+    background-color: #fff6f0; /* background color */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 input[type="text"], input[type="number"], input[type="file"], button {
     padding: 10px;
-    margin-right: 10px;
+    margin-right: 5px;
     margin-bottom: 10px;
-    border: 1px solid #A0522D; /* 边框颜色改为巧克力色 */
+    border: 1px solid #A0522D; /* Border color */
     border-radius: 4px;
     font-size: 16px;
-    background-color: #8B4513; /* 亮巧克力色背景 */
-    color: white; /* 白色文字 */
+    background-color: #8B4513; /* Light chocolate background color */
+    color: white;
 }
 
 button {
     cursor: pointer;
-    background-color: #8B4513; /* 亮巧克力色 */
+    background-color: #8B4513;
     color: white;
     border: none;
     font-size: 16px;
     border-radius: 4px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s; /* Smooth background color transition */
 }
 
 button:hover {
-    background-color: #5A2D0C; /* 深巧克力色 */
+    background-color: #5A2D0C; 
 }
 
 .btn-deep-brown {
-    background-color: #5A2D0C; /* 深棕色 */
-    color: white; /* 白色文字 */
+    background-color: #5A2D0C; 
+    color: white;
 }
 
 .btn-deep-brown:hover {
-    background-color: #3E1E0C; /* 更深的棕色 */
-    color: white; /* 确保悬停时文字颜色依然是白色 */
+    background-color: #3E1E0C; 
+    color: white;
 }
 
 ul {
-    list-style-type: none;
+    list-style-type: none; /* Remove default list styling */
     padding: 0;
 }
 
 .dateToggle {
-    background-color: #D2691E; /* 浅巧克力色 */
+    background-color: #D2691E;
     color: black;
     cursor: pointer;
     padding: 10px;
@@ -148,7 +149,7 @@ ul {
 #statistics, #chocolatesByRating {
     display: inline-block;
     text-align: left;
-    background-color: #D2691E; /* 巧克力色背景 */
+    background-color: #D2691E;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -184,35 +185,32 @@ button {
     padding: 10px 20px;
     font-size: 16px;
     color: white;
-    background-color: #8B4513; /* 亮巧克力色 */
+    background-color: #8B4513;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #5A2D0C; /* 深巧克力色 */
+    background-color: #5A2D0C;
 }
 
-/* Add this to change the placeholder text color to white */
 input::placeholder {
-    color: white; /* 白色 */
-    opacity: 1; /* Make sure the color is fully opaque */
+    color: white; /* White placeholder text */
+    opacity: 1;
 }
 
-/* Specific input types */
 input[type="text"]::placeholder,
 input[type="number"]::placeholder,
 input[type="file"]::placeholder {
-    color: white; /* 白色 */
-    opacity: 1; /* Make sure the color is fully opaque */
+    color: white;
+    opacity: 1;
 }
 
-/* Add this to ensure compatibility with older browsers */
 input:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color: white; /* 白色 */
+    color: white;
 }
 
 input::-ms-input-placeholder { /* Microsoft Edge */
-    color: white; /* 白色 */
+    color: white;
 }

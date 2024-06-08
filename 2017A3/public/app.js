@@ -4,7 +4,7 @@ function addChocolate() {
     const calories = parseInt(document.getElementById('calories').value, 10);
     const ingredients = document.getElementById('ingredients').value;
     const comments = document.getElementById('comments').value;
-    const rating = parseInt(document.getElementById('rating').value, 10);  // 获取评分
+    const rating = parseInt(document.getElementById('rating').value, 10);  // Get the rating
 
     const dateAdded = new Date().toISOString().split('T')[0];
 
@@ -23,6 +23,7 @@ function addChocolate() {
         saveChocolate(name, type, calories, ingredients, comments, rating, dateAdded, imgData);
     }
 }
+    //Save chocolate details to localStorage
 
 function saveChocolate(name, type, calories, ingredients, comments, rating, dateAdded, imgData) {
     let chocolates = JSON.parse(localStorage.getItem('favChocolates')) || [];
@@ -34,6 +35,7 @@ function saveChocolate(name, type, calories, ingredients, comments, rating, date
     document.getElementById('chocolateForm').reset();
 }
 
+// Update the display of chocolates by date
 function updateChocolates() {
     let chocolates = JSON.parse(localStorage.getItem('favChocolates')) || [];
     let container = document.getElementById('chocolatesByDate');
@@ -86,7 +88,7 @@ function updateChocolates() {
     updateChocolatesByRating();
 }
 
-
+// Delete selected chocolates
 function deleteSelectedChocolates() {
     let checkboxes = document.querySelectorAll('.choco-checkbox:checked');
     let chocolates = JSON.parse(localStorage.getItem('favChocolates'));
@@ -123,13 +125,13 @@ document.addEventListener('DOMContentLoaded', () => {
     calculateTotalCalories();
     updateStatistics();
 });
-
+// Calculate total calories of all chocolates
 function calculateTotalCalories() {
     let chocolates = JSON.parse(localStorage.getItem('favChocolates')) || [];
     let totalCalories = chocolates.reduce((sum, item) => sum + item.calories, 0);
     document.getElementById('totalCalories').textContent = ` ${totalCalories}`;
 }
-
+// Update statistics section
 function updateStatistics() {
     let chocolates = JSON.parse(localStorage.getItem('favChocolates')) || [];
     if (chocolates.length === 0) return;
@@ -153,7 +155,7 @@ function updateStatistics() {
     // Update chart
     updateChart(typeCount);
 }
-
+// Update the chart with chocolate type distribution
 function updateChart(typeCount) {
     let ctx = document.getElementById('chocolateChart').getContext('2d');
     let chartData = {
@@ -179,13 +181,13 @@ function updateChart(typeCount) {
         }
     });
 }
-
+// Update chocolates display sorted by rating
 function updateChocolatesByRating() {
     let chocolates = JSON.parse(localStorage.getItem('favChocolates')) || [];
     let container = document.getElementById('chocolatesByRating');
-    container.innerHTML = ''; // 清空现有内容，以便新的排序可以显示
+    container.innerHTML = ''; // Clear current content to show new sorted data
 
-    // 对巧克力数组进行排序，按照评分从高到低排序，并截取前五个
+    // Sort chocolates by rating in descending order and take top 5
     let sortedChocolates = chocolates.sort((a, b) => b.rating - a.rating).slice(0, 5);
 
     sortedChocolates.forEach(choco => {
@@ -204,12 +206,12 @@ function updateChocolatesByRating() {
 }
 
 
-
+// Clear the search input and refresh the chocolates display
 function returnToMainPage() {
     document.getElementById('searchTerm').value = '';
     updateChocolates();
 }
-
+// Search chocolates by name and display the results
 function searchChocolates() {
     let searchTerm = document.getElementById('searchTerm').value.toLowerCase();
     let chocolates = JSON.parse(localStorage.getItem('favChocolates')) || [];
